@@ -1,8 +1,13 @@
 import "dotenv/config";
 import express, {NextFunction, Request, Response} from "express";
 import notesRoutes from "./routes/notes";
+import morgan from "morgan";
 
 const app = express();
+
+app.use(morgan("dev"));
+//information type accepted to the server
+app.use(express.json());
 
 app.use("/api/notes", notesRoutes);
 
