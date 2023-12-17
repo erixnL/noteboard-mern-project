@@ -97,4 +97,29 @@ export const updateNote: RequestHandler<UpdateNoteParams, unknown, UpdateNoteBod
     } catch(error) {
         next(error);
     }
+};
+
+export const deleteNote: RequestHandler = async(req, res, next) => {
+    const noteId = req.params.noteId;
+
+    try {
+        if (!mongoose.isValidObjectId(noteId)) {
+            throw createHttpError(400, "Invalid Note ID");
+        }
+
+        const note = await NoteModel.findById(noteId).exec();
+
+        if (!note) {
+            throw createHttpError(404, "Note not found");
+        }
+
+        await note.deleteOne();
+
+        //res.status doesn't send a response. .json() does instead
+        //.sendStatus to set the status and send at the same time
+        res.sendStatus(204);
+
+    } catch(error) {
+        next(error)
+    }
 }
