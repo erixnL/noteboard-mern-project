@@ -10,4 +10,6 @@ router.get("/:noteId", NoteController.getNote);
 
 router.post("/", NoteController.createNote);
 
+router.patch("/:noteId", NoteController.updateNote);
+
 export default router;
