@@ -9,5 +9,5 @@ const noteSchema = new Schema({
 //create type inferred from Mongoose schema
 type Note = InferSchemaType<typeof noteSchema>
 
-//model("nameOfCollection", collectionSchema)
+//model(modelName, schema)
 export default model<Note>("Note", noteSchema)
