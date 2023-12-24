@@ -1,5 +1,6 @@
 import { Note } from "../models/notes";
 
+//extend the fetch function to handle error condition
 async function fetchData(input: RequestInfo, init?: RequestInit) {
     const response = await fetch(input, init);
     if (response.ok){
@@ -22,6 +23,7 @@ export interface NoteInput {
     text?: string,
 }
 
+//send new note to backend database
 export async function createNote(note: NoteInput): Promise<Note> {
     const response = await fetchData("/api/notes",
     {
@@ -32,4 +34,10 @@ export async function createNote(note: NoteInput): Promise<Note> {
         body: JSON.stringify(note),
     });
     return response.json();
+}
+
+//delete note function
+export async function deleteNote(noteId: string) {
+    await fetchData("/api/notes/" + noteId, {method: "DELETE"});
+
 }

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {Note as NoteModel} from "./models/notes";
 import Note from './components/Notes';
@@ -25,6 +25,15 @@ function App() {
     loadNotes();
   }, [])
 
+  async function deleteNote(note: NoteModel) {
+    try {
+      await NotesApi.deleteNote(note._id);
+      setNotes(notes.filter(existingNotes => existingNotes._id !== note._id))
+    } catch(error) {
+      console.error(error);
+    }
+  }
+
   return (
     <Container>
       <Button className={`mb-4 ${stylesUtils.blockCenter}`}
@@ -35,7 +44,8 @@ function App() {
         
         {notes.map(note=> (
           <Col key={note._id}>
-            <Note note={note} className={styles.note} />
+            <Note note={note} className={styles.note} 
+            onDeleteNoteClicked={deleteNote}/>
           </Col>
           
         ))}
