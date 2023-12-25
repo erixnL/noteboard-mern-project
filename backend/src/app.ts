@@ -3,12 +3,15 @@ import express, {NextFunction, Request, Response} from "express";
 import notesRoutes from "./routes/notes";
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
+import userRoutes from "./routes/users";
 
 const app = express();
 
 app.use(morgan("dev"));
 //information type accepted to the server
 app.use(express.json());
+
+app.use("/api/users", userRoutes);
 
 app.use("/api/notes", notesRoutes);
 
