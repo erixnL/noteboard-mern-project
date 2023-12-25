@@ -37,7 +37,7 @@ const AddNoteDialog = ({noteToEdited, onDismiss, onNoteSaved}: AddEditNoteDialog
             console.log(error);
         }     
     }
-
+    //errors object in return block is from react hook form
     return (
         <Modal show onHide={onDismiss}>
             <Modal.Header closeButton>
