@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { User } from "../models/user";
 import { LoginCredentials } from "../network/notes_api";
-import * as NoteApi from "../network/notes_api";
+import * as NotesApi from "../network/notes_api";
 import { Button, Form, Modal } from "react-bootstrap";
 import TextInputField from "./form/TextInputField";
 import styleUtils from "../styles/utils.module.css";
@@ -15,7 +15,7 @@ const LoginModal = ({onDismiss, onLogInSuccessful}: LoginModalProps) => {
     const { register, handleSubmit, formState: {errors, isSubmitting}} = useForm<LoginCredentials>();
     async function onSubmit(credentials:LoginCredentials) {
         try {
-            const user = await NoteApi.login(credentials);
+            const user = await NotesApi.login(credentials);
             onLogInSuccessful(user);
         } catch(error){
             console.error(error);

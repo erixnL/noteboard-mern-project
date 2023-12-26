@@ -54,7 +54,7 @@ export async function login(credentials: LoginCredentials): Promise<User> {
     return response.json();
 }
 
-export async function logou() {
+export async function logout() {
     await fetchData("/api/users/logout", { method: "POST"});
 }
 
