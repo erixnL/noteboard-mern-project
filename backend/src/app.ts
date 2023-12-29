@@ -30,11 +30,6 @@ app.use(session({
     }),
 }));
 
-app.use('/api/users', (req, res, next) => {
-    res.setHeader('Cache-Control', 'no-store');
-    next();
-  });
-
 app.use("/api/users", userRoutes);
 
 app.use("/api/notes", requiresAuth, notesRoutes);

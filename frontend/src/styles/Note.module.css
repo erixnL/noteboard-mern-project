@@ -11,3 +11,7 @@
 .cardText {
     white-space: pre-line;
 }
+
+.cardChecked {
+    background-color: #ACE1AF;
+}

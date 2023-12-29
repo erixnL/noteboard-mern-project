@@ -4,6 +4,8 @@ import { Card } from "react-bootstrap";
 import { Note as NoteModel } from "../models/notes";
 import { formatDate } from "../utils/formateDate";
 import {MdDelete} from "react-icons/md";
+import { CiCircleCheck } from "react-icons/ci";
+import { useState } from "react";
 
 interface NoteProps {
     note: NoteModel,
@@ -29,11 +31,25 @@ const Note = ({note, className, onNoteClicked, onDeleteNoteClicked}: NoteProps) 
         createdUpdatedText = "Created: " + formatDate(createdAt);
     }
 
+    const [isCardChecked, setIsCardChecked] = useState(false);
+
+    const cardChecked = () => {
+    setIsCardChecked(!isCardChecked);
+    };
+
+
     return (
-        <Card className={`${styles.noteCard} ${className}`}
+        <Card className={`${isCardChecked ? styles.cardChecked : styles.noteCard} ${className}`}
             onClick={()=>{onNoteClicked(note)}}>
             <Card.Body className={styles.cardBody}>
                 <Card.Title className={styleUtils.flexCenter}>
+                <CiCircleCheck
+                        className="text-muted"
+                        onClick={(e) => {
+                            cardChecked();
+                            e.stopPropagation();
+                        }}
+                        />
                     {title}
                     <MdDelete 
                     className="text-muted ms-auto"

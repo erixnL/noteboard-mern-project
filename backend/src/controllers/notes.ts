@@ -33,7 +33,7 @@ export const getNote: RequestHandler =async (req, res, next) => {
         if (!note) {
             throw createHttpError(404, "Note not found");
         }
-        if(note.userId?.equals(authenticatedUserId)) {
+        if(!note.userId?.equals(authenticatedUserId)) {
             throw createHttpError(401, "You cannot access this note.");
         } 
         res.status(200).json(note);
@@ -101,7 +101,7 @@ export const updateNote: RequestHandler<UpdateNoteParams, unknown, UpdateNoteBod
             throw createHttpError(404, "Note not found");
         }
 
-        if(note.userId?.equals(authenticatedUserId)) {
+        if(!note.userId?.equals(authenticatedUserId)) {
             throw createHttpError(401, "You cannot access this note.");
         }
 
@@ -133,7 +133,7 @@ export const deleteNote: RequestHandler = async(req, res, next) => {
             throw createHttpError(404, "Note not found");
         }
         
-        if(note.userId?.equals(authenticatedUserId)) {
+        if(!note.userId?.equals(authenticatedUserId)) {
             throw createHttpError(401, "You cannot access this note.");
         }
 
