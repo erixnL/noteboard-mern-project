@@ -63,6 +63,11 @@ function App() {
                   }}/>
 
                 }
+                <footer className={styles.footer}>
+                      <div>
+                          <a href="https://github.com/erixnL/noteboard-mern-project">Github repo</a>
+                      </div>      
+                </footer>
           </div>
       </BrowserRouter>
     );
