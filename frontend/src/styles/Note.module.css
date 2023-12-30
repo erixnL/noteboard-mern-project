@@ -8,10 +8,20 @@
     mask-image: linear-gradient(180deg, #000 60%, transparent);
 }
 
+.noteCard:hover {
+    width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
 .cardText {
     white-space: pre-line;
 }
 
 .cardChecked {
     background-color: #ACE1AF;
+}
+
+.cardImportant {
+    background-color: #fd5c63;
 }

@@ -5,6 +5,7 @@ import { Note as NoteModel } from "../models/notes";
 import { formatDate } from "../utils/formateDate";
 import {MdDelete} from "react-icons/md";
 import { CiCircleCheck } from "react-icons/ci";
+import { MdOutlineNotificationImportant } from "react-icons/md";
 import { useState } from "react";
 
 interface NoteProps {
@@ -32,14 +33,19 @@ const Note = ({note, className, onNoteClicked, onDeleteNoteClicked}: NoteProps) 
     }
 
     const [isCardChecked, setIsCardChecked] = useState(false);
+    const [isImportant, setisImportant] = useState(false);
 
     const cardChecked = () => {
     setIsCardChecked(!isCardChecked);
     };
 
+    const cardImportant = () => {
+        setisImportant(!isImportant);
+    }
+
 
     return (
-        <Card className={`${isCardChecked ? styles.cardChecked : styles.noteCard} ${className}`}
+        <Card className={`${isCardChecked ? styles.cardChecked : styles.noteCard} ${isImportant ? styles.cardImportant : ''} ${className}`}
             onClick={()=>{onNoteClicked(note)}}>
             <Card.Body className={styles.cardBody}>
                 <Card.Title className={styleUtils.flexCenter}>
@@ -50,6 +56,11 @@ const Note = ({note, className, onNoteClicked, onDeleteNoteClicked}: NoteProps) 
                             e.stopPropagation();
                         }}
                         />
+                <MdOutlineNotificationImportant className="text-muted"
+                onClick={(e)=> {
+                    cardImportant();
+                    e.stopPropagation();
+                }}/>
                     {title}
                     <MdDelete 
                     className="text-muted ms-auto"
