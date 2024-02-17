@@ -26,8 +26,8 @@ Eidt note:
 ## Get Started
 
 Clone this repo
-**npm install** To install packages
-**npm start** Run the backend and frontend in development environment
-**npm build** Build the project to production
+- **npm install** To install packages
+- **npm start** Run the backend and frontend in development environment
+- **npm build** Build the project to production
 
 
