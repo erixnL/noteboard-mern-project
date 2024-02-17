@@ -23,7 +23,7 @@ Eidt note:
 ![image](https://github.com/erixnL/noteboard-mern-project/assets/96608889/65ff879c-e01b-4a75-8927-1feafc91fe1b)
 
 
-## Get Started
+## Set up 
 
 Clone this repo
 - **npm install** To install packages
